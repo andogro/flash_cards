@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="medium-6 columns over">
+    <section>  
+        <br>
+        <a href = "#">Create a new Deck</a>
+          <ul ng-repeat="item in deckData | unique : 'deck_name'">
+             <li>{{item.deck_name}} </li>
+             <li><img src ="{{item.q_img}}"></li>
+          </ul>
+    </section>
+  </div>
+</div>  
