@@ -2,10 +2,12 @@
   <div class="medium-6 columns over">
     <section>  
         <br>
-        <a href = "#">Create a new Deck</a>
+        <a href = "#/deck/new">Create a new Deck</a>
           <ul ng-repeat="item in deckData | unique : 'deck_name'">
+             <a href="#/singledeck/{{item.d_id}}">
              <li>{{item.deck_name}} </li>
              <li><img src ="{{item.q_img}}"></li>
+             </a>
           </ul>
     </section>
   </div>

@@ -30,14 +30,45 @@ module.exports = {
             return results;
         });
     },
-    getSingleUser: function(id){
-        return knex.from('users').fullOuterJoin('posts', 'users.u_id', 'posts.u_id')
-        .fullOuterJoin('events', 'posts.e_id', 'events.e_id')
-        .where('users.u_id',id)
+    showOneDeck: function(id){
+        return Decks().join('cards', 'decks.d_id', '=', 'cards.deck_id')
+        .where('decks.d_id',id)
         .then(function(results) {
+            console.log("one deck results"+results)
             return results;
         });
     },
+    addDeck: function(deckname,deckdesc,created,deck_id,question,answer,q_img,a_img){
+        return Decks().insert({
+            deck_name: deckname,
+            deck_desc: deckdesc,
+            created: created,
+            last_update: created
+        })
+        .then(function(results) {
+            console.log("Deck results"+results)
+            var test_id = results.deck_id;
+            return Cards().insert({
+             deck_id: deck_id,
+              question: question,
+              answer: answer,
+              q_img: q_img,
+              a_img: a_img
+        })
+       })   
+      },  
+    // addQuestion: function(deck_id,question,answer,q_img,a_img){
+    //       return Cards().insert({
+    //           deck_id: deck_id
+    //           // question: question,
+    //           answer: answer,
+    //           q_img: q_img,
+    //           a_img: a_img,
+    //       })
+    //       .then(function(results) {
+    //           return results;
+    //       });
+    //     }, 
 
     addUser: function(fname,lname,email,password,img,bio){
         return Users().insert({

@@ -66,55 +66,43 @@ var id = req.params.id;
   });
 });
 
+// get decks for an individual
+router.get('/singledeck/:id', function(req, res, next) {
+var id = req.params.id;
+ queries.showOneDeck(id)  
+ .then(function(results) {
+   res.status(200).json({
+      data: results
+    });
+  })
+  .catch(function (err) {
+    return next(err);
+  });
+});
 
-// //Post to create a new deck
-// router.post('/deck/new', function(req, res, next) {
-//   var e_name = req.body.e_name;
-//   var desc = req.body.desc;
-//   var start = null;
-//   var end = null;
-//   var e_latitude = req.body.e_latitude;
-//   var e_longitude = req.body.e_longitude;
-//   var public = true;
-//   var code = null;
-//   var e_img = req.body.e_img;
-//   var et_id = parseInt(req.body.et_id);
-//   placequery.addEvent(e_name,desc,start,end,e_latitude,e_longitude,public,code,e_img,et_id).then(function(results){
-//     res.redirect('/places');
-//   });
+
+ // Get create new deck form
+// router.get('/deck/new', function(req, res, next) {
+//   res.sendFile('/index.html');
 // });
 
+//  Post to create a new deck
+router.post('/deck/new', function(req, res, next) {
+var deckname = req.body.deck_name;
+var deckdesc = req.body.deck_desc;
+var question = req.body.question;
+var answer = req.body.answer;
+var q_img = req.body.q_img;
+var a_img = req.body.a_img;
+ queries.addDeck(deckname,deckdesc,question,answer,q_img,a_img,deck_id)
+ .then(function(fullresults) {
+      console.log("full results"+fullresults)
+      res.status(200).json({
+      data: fullresults
+    });
+   })
+  });
 
-
-// //post to create new imprint
-// router.post('/:id', function(req,res,next) {
-//   var post = req.body.post;
-//   var created_at = req.body.created_at;
-//   var e_id = req.params.id;
-//   var u_id = req.body.u_id;
-//   placequery.addImprint(post,created_at,e_id,u_id).then(function(results) {
-//   res.redirect('/places/'+ e_id);
-//   });
-// });
-
-// router.get('/:id/proximity', function (req, res, next) {
-//   console.log('query params:', req.query);
-//     var id = req.params.id;
-//     placequery.getSingleEvents(id).then(function(results) {
-//     var eventLat = parseFloat(results[0].e_latitude);
-//     var eventLon = parseFloat(results[0].e_longitude);
-//     var locationProximity = placequery.proximity(eventLat, eventLon, .03);
-//     var userProx = placequery.proximity(req.query.lat, req.query.lon, .000);
-//     var overlap = placequery.proximityOverlap(userProx, locationProximity);
-//     res.status(200).json(overlap);
-//   });
-// });
-
-// // new
-// router.get('/geo', function(req, res, next) {
-//   var key = process.env.MAPS;
-//   res.render('places/geo', { title: 'Geo test', api: key});
-// });
 
 
 

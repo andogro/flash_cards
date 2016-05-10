@@ -19,13 +19,25 @@
     })
     .when('/users', {
       templateUrl: '../components/users/usersindex.html',
-      controller: 'usersController',
+      controller: 'usersController'
       // restricted: false,
       // preventLoggedIn: false
     })
     .when('/decks/:id',{
       templateUrl: '../components/decks/deckindex.html',
-      controller: 'decksController',
+      controller: 'decksController'
+      // restricted: false,
+      // preventLoggedIn: false
+    })
+    .when('/deck/new',{
+      templateUrl: '../components/decks/addnewdeck.html',
+      controller: 'newDecksController'
+      // restricted: false,
+      // preventLoggedIn: false
+    })
+    .when('/singledeck/:id',{
+      templateUrl: '../components/decks/singledeck.html',
+      controller: 'singleDeckController'
       // restricted: false,
       // preventLoggedIn: false
     })
