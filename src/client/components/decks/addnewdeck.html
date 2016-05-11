@@ -5,35 +5,35 @@
         <form ng-submit="submit()">
                   <fieldset class="form-group">
                     <label for="name">Deck Name</label>
-                    <input name="deck_name" type="text" class="form-control" id="name" placeholder="Deck Name" required >
+                    <input name="deck_name" type="text" class="form-control" id="deck_name" ng-model="formData.deck_name" placeholder="Deck Name" required >
                   </fieldset>
                  
                  <fieldset class="form-group">
                    <label for="deck_desc">Deck Description</label>
-                   <textarea name="deck_desc" class="form-control" id="description" rows="5" required></textarea>
+                   <textarea name="deck_desc" class="form-control" id="description" ng-model="formData.deck_description" rows="5" required></textarea>
                  </fieldset>
 
 
                  <fieldset class="form-group">
                     <label for="question">Question </label>
-                    <input name="question" type="text" class="form-control" id="question" placeholder="Question" required>
+                    <input name="question" type="text" class="form-control" id="question" ng-model="formData.question" placeholder="Question" required>
                   </fieldset>
 
 
                   <fieldset class="form-group">
                     <label for="q_img">Question Url</label>
-                    <input name="q_img" <input type="url" class="form-control" id="q_img" placeholder ="question image" required >
+                    <input name="q_img" <input type="url" class="form-control" id="q_img" ng-model="formData.q_img" placeholder ="question image" required >
                   </fieldset>
 
                   <fieldset class="form-group">
-                     <label for="question">Answer</label>
-                     <input name="answer" type="text" class="form-control" id="answer" placeholder="Answer" required>
+                     <label for="answer">Answer</label>
+                     <input name="answer" type="text" class="form-control" id="answer" ng-model="formData.answer" placeholder="Answer" required>
                    </fieldset>
 
 
                    <fieldset class="form-group">
-                     <label for="q_img">Answer Url</label>
-                     <input name="q_img" <input type="url" class="form-control" id="q_img" placeholder ="question image" required >
+                     <label for="a_img">Answer Url</label>
+                     <input name="a_img" <input type="url" class="form-control" id="a_img" ng-model="formData.a_img" placeholder ="question image" required >
                    </fieldset>
  
                   <button type="submit" class="btn btn-primary">Submit</button>

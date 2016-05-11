@@ -52,7 +52,7 @@ router.get('/cards', function(req, res, next) {
   });
 });
 
-// get decks for an individual
+// get decks for an individual user
 router.get('/decks/:id', function(req, res, next) {
 var id = req.params.id;
  queries.getUserDecks(id)  
@@ -66,7 +66,7 @@ var id = req.params.id;
   });
 });
 
-// get decks for an individual
+// get single decks 
 router.get('/singledeck/:id', function(req, res, next) {
 var id = req.params.id;
  queries.showOneDeck(id)  
@@ -82,19 +82,20 @@ var id = req.params.id;
 
 
  // Get create new deck form
-// router.get('/deck/new', function(req, res, next) {
-//   res.sendFile('/index.html');
-// });
+router.get('/deck/new', function(req, res, next) {
+  res.status(200);
+});
 
 //  Post to create a new deck
 router.post('/deck/new', function(req, res, next) {
-var deckname = req.body.deck_name;
-var deckdesc = req.body.deck_desc;
-var question = req.body.question;
-var answer = req.body.answer;
-var q_img = req.body.q_img;
-var a_img = req.body.a_img;
- queries.addDeck(deckname,deckdesc,question,answer,q_img,a_img,deck_id)
+ var info = {};
+ info.deckname = req.body.deck_name;
+ info.deckdesc = req.body.deck_desc;
+ info.question = req.body.question;
+ info.answer = req.body.answer;
+ info.q_img = req.body.q_img;
+ info.a_img = req.body.a_img;
+ queries.addDeck(info)
  .then(function(fullresults) {
       console.log("full results"+fullresults)
       res.status(200).json({

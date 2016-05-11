@@ -38,22 +38,25 @@ module.exports = {
             return results;
         });
     },
-    addDeck: function(deckname,deckdesc,created,deck_id,question,answer,q_img,a_img){
+    addDeck: function(info){
+        console.log("this is first query"+info)
         return Decks().insert({
-            deck_name: deckname,
-            deck_desc: deckdesc,
-            created: created,
-            last_update: created
+            deck_name: info.deckname,
+            deck_desc: info.deckdesc,
         })
-        .then(function(results) {
-            console.log("Deck results"+results)
-            var test_id = results.deck_id;
+        .then(function() {
+            return Decks()
+            .then(function(results) {
+            console.log("Deck results"+JSON.stringify(results));
+            var lastDeck = results.pop();
+            var deck_id = lastDeck.d_id;
             return Cards().insert({
-             deck_id: deck_id,
-              question: question,
-              answer: answer,
-              q_img: q_img,
-              a_img: a_img
+              deck_id: deck_id,
+              question: info.question,
+              answer: info.answer,
+              q_img: info.q_img,
+              a_img: info.a_img
+          })    
         })
        })   
       },  
