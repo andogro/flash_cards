@@ -18,19 +18,7 @@ angular.module('myApp')
                   console.log('Error: ' + JSON.stringify(error));
               });
       };
-
-
-
-
-    // // Create a new Deck
-    // $http.post('/deck/new')
-    //     .success(function(results) {
-    //         $scope.deckData = results.data;
-    //         console.log("new deck data if any"+ JSON.stringify($scope.deckData));
-    //     })
-    //     .error(function(error) {
-    //         console.log('Error: ' + JSON.stringify(error));
-    //     });
+      
     });
 
 })();

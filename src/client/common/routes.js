@@ -42,6 +42,8 @@
       // preventLoggedIn: false
     })
     .otherwise({ redirectTo : '/login'});
+    
+    // will add this info later when working on login
     // .when('/login', {
     //   templateUrl: '../components/auth/login.html',
     //   controller: 'loginController',
@@ -74,17 +76,17 @@
     // $httpProvider.interceptors.push('authInterceptor');
   }
 
-  function routeChange($rootScope, $location, $window, authService) {
-    $rootScope.$on('$routeChangeStart', function(event, next, current) {
-      // if route us restricted and no token is present
-      if(next.restricted && !$window.localStorage.getItem('token')) {
-        $location.path('/');
-      }
-      // if token and prevent logging in is true
-      if(next.preventLoggedIn && $window.localStorage.getItem('token')) {;
-        $location.path('/members');
-      }
-    });
-  }
+  // function routeChange($rootScope, $location, $window, authService) {
+  //   $rootScope.$on('$routeChangeStart', function(event, next, current) {
+  //     // if route us restricted and no token is present
+  //     if(next.restricted && !$window.localStorage.getItem('token')) {
+  //       $location.path('/');
+  //     }
+  //     // if token and prevent logging in is true
+  //     if(next.preventLoggedIn && $window.localStorage.getItem('token')) {;
+  //       $location.path('/members');
+  //     }
+  //   });
+  // }
 
 })();

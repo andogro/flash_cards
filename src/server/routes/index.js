@@ -24,7 +24,7 @@ router.get('/users', function(req, res, next) {
   });
 });
 
-// // get all decks
+// // get all decks - may use this later
 // router.get('/decks', function(req, res, next) {
 //  queries.getAllDecks()
 //   .then(function(results) {
@@ -103,8 +103,6 @@ router.post('/deck/new', function(req, res, next) {
     });
    })
   });
-
-
 
 
 module.exports = router;

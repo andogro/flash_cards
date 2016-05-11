@@ -60,6 +60,8 @@ module.exports = {
         })
        })   
       },  
+
+    // !Routes to be added
     // addQuestion: function(deck_id,question,answer,q_img,a_img){
     //       return Cards().insert({
     //           deck_id: deck_id
@@ -73,36 +75,36 @@ module.exports = {
     //       });
     //     }, 
 
-    addUser: function(fname,lname,email,password,img,bio){
-        return Users().insert({
-            fname: fname,
-            lname: lname,
-            email: email,
-            password: password,
-            u_img: img,
-            bio: bio
-        })
-        .then(function(results) {
-            return results;
-        });
-    },
-    editUser: function(id,fname,lname,email,password,img,bio) {
-        return Users().where('u_id',id).update({
-            fname: fname,
-            lname: lname,
-            email: email,
-            password: password,
-            u_img: img,
-            bio: bio
-        })
-        .then(function(results) {
-            return results;
-        }); 
-    },
-    deleteUser: function(id) {
-      return Users().where('u_id', id).del().then(function(results) {
-          return results;
-        });
-     }
+    // addUser: function(fname,lname,email,password,img,bio){
+    //     return Users().insert({
+    //         fname: fname,
+    //         lname: lname,
+    //         email: email,
+    //         password: password,
+    //         u_img: img,
+    //         bio: bio
+    //     })
+    //     .then(function(results) {
+    //         return results;
+    //     });
+    // },
+    // editUser: function(id,fname,lname,email,password,img,bio) {
+    //     return Users().where('u_id',id).update({
+    //         fname: fname,
+    //         lname: lname,
+    //         email: email,
+    //         password: password,
+    //         u_img: img,
+    //         bio: bio
+    //     })
+    //     .then(function(results) {
+    //         return results;
+    //     }); 
+    // },
+    // deleteUser: function(id) {
+    //   return Users().where('u_id', id).del().then(function(results) {
+    //       return results;
+    //     });
+    //  }
 
 };
