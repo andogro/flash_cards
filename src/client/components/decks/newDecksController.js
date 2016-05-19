@@ -3,13 +3,13 @@
   'use strict';
 
 angular.module('myApp')
-.controller('newDecksController', function($scope, $http, $routeParams) {
+.controller('newDecksController', function($scope, $routeParams, crudService) {
 
    $scope.formData = {};
 
      $scope.submit = function() {     
-            console.log($scope.formData);
-          $http.post('/deck/new', $scope.formData)
+          console.log($scope.formData);
+          crudService.addDeck($scope.formData)
               .success(function(data) {
                   $scope.formData = {};
                   console.log(data);

@@ -20,14 +20,13 @@ angular.module('myApp')
    };
 })
 
-.controller('decksController', function($scope, $http, $routeParams) {
-
+.controller('decksController', function($scope, $routeParams, crudService) {
+    console.log('hello');
     $scope.formData = {};
     $scope.userData = {};
     var currId = $routeParams.id;
 
-    // Get user by ID
-    $http.get('/decks/'+currId)
+     crudService.getDeckById(currId)
         .success(function(results) {
             $scope.deckData = results.data;
             console.log("deck it out"+ JSON.stringify($scope.deckData));
